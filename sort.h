@@ -32,13 +32,13 @@ typedef struct listint_s
 } listint_t;
 
 /* Pr functions */
-void pr_array(const int *array, size_t size);
+void print_array(const int *array, size_t size);
 void pr_list(const listint_t *list);
 
 /* The Sorting algoritms */
 void merge_sort(int *arry, size_t size);
 void cock_sortList(listint_t **list);
-void b_sort(int *array, size_t size);
+void bubble_sort(int *array, size_t size);
 void q_sort(int *arry, size_t size);
 void s_sort(int *array, size_t size);
 void insert_sortList(listint_t **list);

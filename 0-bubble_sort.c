@@ -16,30 +16,30 @@ void swp_integers(int *a, int *b)
 }
 
 /**
- * b_sort - integers ares sorted in an ascending order.
+ * bubble_sort - integers ares sorted in an ascending order.
  * @array: integers to sort.
  * @size: size of array.
  *
  * Description: array is printed after swapping.
  */
-void b_sort(int *array, size_t size)
+void bubble_sort(int *array, size_t size)
 {
     size_t i, len = size;
-    bool b_ = false;
+    bool bubbly = false;
 
     if (array == NULL || size < 2)
         return;
 
-    while (b_ == false)
+    while (bubbly == false)
     {
-        b_ = true;
+        bubbly = true;
         for (i = 0; i < len - 1; i++)
         {
             if (array[i] > array[i + 1])
             {
                 swp_integers(array + i, array + i + 1);
-                pr_array(array, size);
-                b_ = false;
+                print_array(array, size);
+                bubbly = false;
             }
         }
         len--;
