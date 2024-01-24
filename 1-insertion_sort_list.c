@@ -27,7 +27,7 @@ void nodes_swp(listint_t **h, listint_t **n1, listint_t *n2)
  *
  * Description: after wapping, list is printed - 0x1B. C - Sorting algorithms & Big O.
  */
-void insert_sortList(listint_t **list)
+void insertion_sort_list(listint_t **list)
 {
     listint_t *iter_, *insert, *tmp;
 
@@ -41,7 +41,7 @@ void insert_sortList(listint_t **list)
         while (insert != NULL && iter_->n < insert->n)
         {
             nodes_swp(list, &insert, iter_);
-            pr_list((const listint_t *)*list);
+            print_list((const listint_t *)*list);
         }
     }
 }
