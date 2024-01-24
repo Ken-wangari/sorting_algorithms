@@ -34,7 +34,7 @@ void merge_subarr(int *subarr, int *buff, size_t front, size_t mid,
         subarr[i] = buff[k++];
 
     printf("[Done]: ");
-    print_array(subarr + front, back - front);
+    pr_array(subarr + front, back - front);
 }
 
 /**
