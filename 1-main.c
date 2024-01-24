@@ -24,11 +24,11 @@ listint_t *create_listint(const int *array, size_t size)
             return (NULL);
         tmp = (int *)&node->n;
         *tmp = array[size];
-        node->nxt = list;
-        node->previous = NULL;
+        node->next = list;
+        node->prev = NULL;
         list = node;
-        if (list->nxt)
-            list->nxt->previous = list;
+        if (list->next)
+            list->next->prev = list;
     }
     return (list);
 }

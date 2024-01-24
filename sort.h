@@ -21,14 +21,14 @@ typedef enum bool
  * struct listint_s - This represents doubly linked list node
  *
  * @n: the Integer that is stored in the node
- * @previous: the Pointer to the previous element
- * @nxt: the Pointer to the next element
+ * @prev: the Pointer to the previous element
+ * @next: the Pointer to the next element
  */
 typedef struct listint_s
 {
     const int n;
-    struct listint_s *previous;
-    struct listint_s *nxt;
+    struct listint_s *prev;
+    struct listint_s *next;
 } listint_t;
 
 /* Pr functions */
