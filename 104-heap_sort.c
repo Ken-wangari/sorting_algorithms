@@ -1,7 +1,7 @@
 #include "sort.h"
 
 void swp_integers(int *a, int *b);
-void maximum_heapify(int *array, size_t size, size_t base, size_t root);
+void maximum_heap_ify(int *array, size_t size, size_t base_, size_t ro_ot);
 void heap_sort(int *array, size_t size);
 
 /**
@@ -19,30 +19,30 @@ void swp_integers(int *a, int *b)
 }
 
 /**
- * maximum_heapify - turns to binary heap.
+ * maximum_heap_ify - turns to binary heap.
  * @array: represents a binary tree.
  * @size: The size.
  * @base: The index.
  * @root: Root node.
  */
-void maximum_heapify(int *array, size_t size, size_t base, size_t root)
+void maximum_heap_ify(int *array, size_t size, size_t base_, size_t ro_ot)
 {
     size_t left, right, large;
 
-    left = 2 * root + 1;
-    right = 2 * root + 2;
-    large = root;
+    left = 2 * ro_ot + 1;
+    right = 2 * ro_ot + 2;
+    large = ro_ot;
 
-    if (left < base && array[left] > array[large])
+    if (left < base_ && array[left] > array[large])
         large = left;
-    if (right < base && array[right] > array[large])
+    if (right < base_ && array[right] > array[large])
         large = right;
 
-    if (large != root)
+    if (large != ro_ot)
     {
-        swp_integers(array + root, array + large);
-        pr_array(array, size);
-        maximum_heapify(array, size, base, large);
+        swp_integers(array + ro_ot, array + large);
+        print_array(array, size);
+        maximum_heap_ify(array, size, base_, large);
     }
 }
 
@@ -52,7 +52,7 @@ void maximum_heapify(int *array, size_t size, size_t base, size_t root)
  * @array: An array of integers.
  * @size: The size of the array.
  *
- * Description: uses heap sort algorithm to swap in ascending order.
+ * Description: uses heap sort algorithm to swap in ascending order. - Big O and sorting algorithms.
  */
 void heap_sort(int *array, size_t size)
 {
@@ -62,13 +62,13 @@ void heap_sort(int *array, size_t size)
         return;
 
     for (i = (size / 2) - 1; i >= 0; i--)
-        maximum_heapify(array, size, size, i);
+        maximum_heap_ify(array, size, size, i);
 
     for (i = size - 1; i > 0; i--)
     {
         swp_integers(array, array + i);
-        pr_array(array, size);
-        maximum_heapify(array, size, i, 0);
+        print_array(array, size);
+        maximum_heap_ify(array, size, i, 0);
     }
 }
 
