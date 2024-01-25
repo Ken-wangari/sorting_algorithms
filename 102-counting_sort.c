@@ -21,49 +21,49 @@ int get_maximum(int *array, int size)
 }
 
 /**
- * count_sort - Sorts in ascending order and uses count sort algorithm.
+ * counting_sort - Sorts in ascending order and uses count sort algorithm.
  *                 
  * @array: array of integers.
  * @size: size of array.
  *
  * Description: Prints setting it up.
  */
-void count_sort(int *array, size_t size)
+void counting_sort(int *array, size_t size)
 {
-    int *count, *sorted, maximum, i;
+    int *count_, *sort_ed, maximum, i;
 
     if (array == NULL || size < 2)
         return;
 
-    sorted = malloc(sizeof(int) * size);
-    if (sorted == NULL)
+    sort_ed = malloc(sizeof(int) * size);
+    if (sort_ed == NULL)
         return;
     maximum = get_maximum(array, size);
-    count = malloc(sizeof(int) * (maximum + 1));
-    if (count == NULL)
+    count_ = malloc(sizeof(int) * (maximum + 1));
+    if (count_ == NULL)
     {
-        free(sorted);
+        free(sort_ed);
         return;
     }
 
     for (i = 0; i < (maximum + 1); i++)
-        count[i] = 0;
+        count_[i] = 0;
     for (i = 0; i < (int)size; i++)
-        count[array[i]] += 1;
+        count_[array[i]] += 1;
     for (i = 0; i < (maximum + 1); i++)
-        count[i] += count[i - 1];
-    pr_array(count, maximum + 1);
+        count_[i] += count_[i - 1];
+    print_array(count_, maximum + 1);
 
     for (i = 0; i < (int)size; i++)
     {
-        sorted[count[array[i]] - 1] = array[i];
-        count[array[i]] -= 1;
+        sort_ed[count_[array[i]] - 1] = array[i];
+        count_[array[i]] -= 1;
     }
 
     for (i = 0; i < (int)size; i++)
-        array[i] = sorted[i];
+        array[i] = sort_ed[i];
 
-    free(sorted);
-    free(count);
+    free(sort_ed);
+    free(count_);
 }
 
