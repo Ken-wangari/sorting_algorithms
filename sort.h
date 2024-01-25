@@ -42,7 +42,7 @@ void bubble_sort(int *array, size_t size);
 void q_sort(int *arry, size_t size);
 void s_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
-void sel_srt(int *arry, size_t size);
+void selection_sort(int *arry, size_t size);
 void count_sort(int *arry, size_t size);
 void bi_sort(int *arry, size_t size);
 void quick_sort_hoare(int *arry, size_t size);

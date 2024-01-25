@@ -21,7 +21,7 @@ void swp_integers(int *a, int *b)
  *
  * Description: after swapping, the array is printed - 0x1B. C - Sorting algorithms & Big O.
  */
-void sel_srt(int *array, size_t size)
+void selection_sort(int *array, size_t size)
 {
     int *min_;
     size_t i, j;
