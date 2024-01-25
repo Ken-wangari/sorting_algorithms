@@ -1,10 +1,10 @@
 #include "sort.h"
 
 void swp_integers(int *a, int *b);
-void bi_merge(int *array, size_t size, size_t start, size_t seq,
-        char flow);
-void bi_seq(int *array, size_t size, size_t start, size_t seq, char flow);
-void bi_sort(int *array, size_t size);
+void bi_merge(int *array, size_t size, size_t start_, size_t sequence,
+        char flow_d);
+void bi_seq(int *array, size_t size, size_t start_, size_t sequence, char flow_d);
+void bitonic_sort(int *array, size_t size);
 
 /**
  * swp_integerss - Swap two integers.
@@ -25,66 +25,66 @@ void swp_integers(int *a, int *b)
  * @array: array.
  * @size: The size array.
  * @start: Starting index.
- * @seq: size of sequence.
- * @flow: the flow of direction.
+ * @sequence: size of sequence.
+ * @flow_d: the flow of direction.
  */
-void bi_merge(int *array, size_t size, size_t start, size_t seq,
-        char flow)
+void bi_merge(int *array, size_t size, size_t start_, size_t sequence,
+        char flow_d)
 {
-    size_t i, jump = seq / 2;
+    size_t i, jump = sequence / 2;
 
-    if (seq > 1)
+    if (sequence > 1)
     {
-        for (i = start; i < start + jump; i++)
+        for (i = start_; i < start_ + jump; i++)
         {
-            if ((flow == UP && array[i] > array[i + jump]) ||
-                (flow == DOWN && array[i] < array[i + jump]))
+            if ((flow_d == UP && array[i] > array[i + jump]) ||
+                (flow_d == DOWN && array[i] < array[i + jump]))
                 swp_integers(array + i, array + i + jump);
         }
-        bi_merge(array, size, start, jump, flow);
-        bi_merge(array, size, start + jump, jump, flow);
+        bi_merge(array, size, start_, jump, flow_d);
+        bi_merge(array, size, start_ + jump, jump, flow_d);
     }
 }
 
 /**
  * @array: An array of integers.
  * @size: The size of the array.
- * @start: The starting index.
- * @seq: The size of a block.
- * @flow: The direction.
+ * @start_: The starting index.
+ * @sequence: The size of a block.
+ * @flow_d: The direction.
  */
-void bi_seq(int *array, size_t size, size_t start, size_t seq, char flow)
+void bi_sequence(int *array, size_t size, size_t start_, size_t sequence, char flow_d)
 {
-    size_t cut = seq / 2;
-    char *str = (flow == UP) ? "UP" : "DOWN";
+    size_t cut = sequence / 2;
+    char *str = (flow_d == UP) ? "UP" : "DOWN";
 
-    if (seq > 1)
+    if (sequence > 1)
     {
-        printf("Merging [%lu/%lu] (%s):\n", seq, size, str);
-        pr_array(array + start, seq);
+        printf("Merging [%lu/%lu] (%s):\n", sequence, size, str);
+        print_array(array + start_, sequence);
 
-        bi_seq(array, size, start, cut, UP);
-        bi_seq(array, size, start + cut, cut, DOWN);
-        bi_merge(array, size, start, seq, flow);
+        bi_sequence(array, size, start_, cut, UP);
+        bi_sequence(array, size, start_ + cut, cut, DOWN);
+        bi_merge(array, size, start_, sequence, flow_d);
 
-        printf("Result [%lu/%lu] (%s):\n", seq, size, str);
-        pr_array(array + start, seq);
+        printf("Result [%lu/%lu] (%s):\n", sequence, size, str);
+        print_array(array + start_, sequence);
     }
 }
 
 /**
- * bi_sort - Sort in ascending
+ * bitonic_sort - Sort in ascending
  *                 
  * @array: An array of integers.
  * @size: The size of array.
  *
  * Description: uses the bitonic sort algorithm.
  */
-void bi_sort(int *array, size_t size)
+void bitonic_sort(int *array, size_t size)
 {
     if (array == NULL || size < 2)
         return;
 
-    bi_seq(array, size, 0, size, UP);
+    bi_sequence(array, size, 0, size, UP);
 }
 
