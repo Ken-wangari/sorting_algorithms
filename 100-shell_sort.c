@@ -15,13 +15,13 @@ void swp_integers(int *a, int *b)
 }
 
 /**
- * s_sort - uses shell sort algorithm to sort in an ascending order.
+ * shell_sort - uses shell sort algorithm to sort in an ascending order.
  * @array: array of integers.
  * @size: size of array.
  *
  * Description: shell_sort.c - interval sequence.
  */
-void s_sort(int *array, size_t size)
+void shell_sort(int *array, size_t size)
 {
     size_t g_ap, i, j;
 
@@ -42,6 +42,6 @@ void s_sort(int *array, size_t size)
                 j -= g_ap;
             }
         }
-        pr_array(array, size);
+        print_array(array, size);
     }
 }
