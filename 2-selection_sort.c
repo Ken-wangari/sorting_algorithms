@@ -38,7 +38,7 @@ void sel_srt(int *array, size_t size)
         if ((array + i) != min_)
         {
             swp_integers(array + i, min_);
-            pr_array(array, size);
+            print_array(array, size);
         }
     }
 }
