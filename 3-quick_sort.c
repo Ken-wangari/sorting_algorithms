@@ -1,9 +1,9 @@
 #include "sort.h"
 
 void swp_integers(int *a, int *b);
-int lomuto_partition(int *array, size_t size, int left, int right);
+int lomuto_part(int *array, size_t size, int left, int right);
 void lomuto_sort(int *array, size_t size, int left, int right);
-void q_sort(int *array, size_t size);
+void quick_sort(int *array, size_t size);
 
 /**
  * swp_integers - the function Swaps two integers in an array.
@@ -20,7 +20,7 @@ void swp_integers(int *a, int *b)
 }
 
 /**
- * lomuto_partition - the last element is the pivot.
+ * lomuto_part - the last element is the pivot.
  * @array: array of integers.
  * @size: size of the array.
  * @left: starting index.
@@ -28,7 +28,7 @@ void swp_integers(int *a, int *b)
  *
  * Return: partition index finality - 0x1B. C - Sorting algorithms & Big O 
  */
-int lomuto_partition(int *array, size_t size, int left, int right)
+int lomuto_part(int *array, size_t size, int left, int right)
 {
     int *piv, above, below;
 
@@ -40,7 +40,7 @@ int lomuto_partition(int *array, size_t size, int left, int right)
             if (above < below)
             {
                 swp_integers(array + below, array + above);
-                pr_array(array, size);
+                print_array(array, size);
             }
             above++;
         }
@@ -48,8 +48,8 @@ int lomuto_partition(int *array, size_t size, int left, int right)
 
     if (array[above] > *piv)
     {
-        swp_intsegers(array + above, piv;
-        pr_array(array, size);
+        swp_integers(array + above, piv);
+        print_array(array, size);
     }
 
     return (above);
@@ -70,20 +70,20 @@ void lomuto_sort(int *array, size_t size, int left, int right)
 
     if (right - left > 0)
     {
-        part = lomuto_partition(array, size, left, right);
+        part = lomuto_part(array, size, left, right);
         lomuto_sort(array, size, left, part - 1);
         lomuto_sort(array, size, part + 1, right);
     }
 }
 
 /**
- * q_sort - uses quicksort algorithm to sort.
+ * quick_sort - uses quicksort algorithm to sort.
  * @array: array of the integers.
  * @size: size of array.
  *
  * Description: prints array after each swap - 0x1B. C - Sorting algorithms & Big O 
  */
-void q_sort(int *array, size_t size)
+void quick_sort(int *array, size_t size)
 {
     if (array == NULL || size < 2)
         return;

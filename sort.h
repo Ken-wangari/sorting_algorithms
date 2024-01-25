@@ -39,7 +39,7 @@ void print_list(const listint_t *list);
 void merge_sort(int *arry, size_t size);
 void cock_sortList(listint_t **list);
 void bubble_sort(int *array, size_t size);
-void q_sort(int *arry, size_t size);
+void quick_sort(int *arry, size_t size);
 void s_sort(int *array, size_t size);
 void insertion_sort_list(listint_t **list);
 void selection_sort(int *arry, size_t size);
