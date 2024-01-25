@@ -1,11 +1,11 @@
 #include "sort.h"
 
 int get_maximum(int *array, int size);
-void radix_counting_sort(int *array, size_t size, int sig, int *buff);
+void radix_count_sort_(int *array, size_t size, int significance, int *buffer);
 void radix_sort(int *array, size_t size);
 
 /**
- * get_max - This function gest the maximum value.
+ * get_maximum - This function gest the maximum value.
  * @array: array of integers.
  * @size: size of array.
  *
@@ -25,31 +25,31 @@ int get_maximum(int *array, int size)
 }
 
 /**
- * radix_counting_sort - sorts in ascending order
+ * radix_count_sort_ - sorts in ascending order
  * @array: array of integers.
  * @size: size of array.
- * @sig: significant digit.
- * @buff: storage.
+ * @significance: significant digit.
+ * @buffer: storage.
  */
-void radix_counting_sort(int *array, size_t size, int sig, int *buff)
+void radix_count_sort_(int *array, size_t size, int significance, int *buffer)
 {
     int count[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     size_t i;
 
     for (i = 0; i < size; i++)
-        count[(array[i] / sig) % 10] += 1;
+        count[(array[i] / significance) % 10] += 1;
 
     for (i = 0; i < 10; i++)
         count[i] += count[i - 1];
 
     for (i = size - 1; (int)i >= 0; i--)
     {
-        buff[count[(array[i] / sig) % 10] - 1] = array[i];
-        count[(array[i] / sig) % 10] -= 1;
+        buffer[count[(array[i] / significance) % 10] - 1] = array[i];
+        count[(array[i] / significance) % 10] -= 1;
     }
 
     for (i = 0; i < size; i++)
-        array[i] = buff[i];
+        array[i] = buffer[i];
 }
 
 /**
@@ -61,22 +61,22 @@ void radix_counting_sort(int *array, size_t size, int sig, int *buff)
  */
 void radix_sort(int *array, size_t size)
 {
-    int maximum, sig, *buff;
+    int maximum, significance, *buffer;
 
     if (array == NULL || size < 2)
         return;
 
-    buff = malloc(sizeof(int) * size);
-    if (buff == NULL)
+    buffer = malloc(sizeof(int) * size);
+    if (buffer == NULL)
         return;
 
     maximum = get_maximum(array, size);
-    for (sig = 1; maximum / sig > 0; sig *= 10)
+    for (significance = 1; maximum / significance > 0; significance *= 10)
     {
-        radix_counting_sort(array, size, sig, buff);
-        pr_array(array, size);
+        radix_count_sort_(array, size, significance, buffer);
+        print_array(array, size);
     }
 
-    free(buff);
+    free(buffer);
 }
 
